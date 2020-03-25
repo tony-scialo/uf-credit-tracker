@@ -6,7 +6,7 @@ import { Button, TextField, InputAdornment } from '@material-ui/core'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import PersonIcon from '@material-ui/icons/Person'
 
-import SignIn from '../assets/login.jpg'
+import SignIn from '../assets/Plain-credit-card.jpg'
 
 const Login = () => {
   const username = useSelector((state: RootState) => state.app.username)
@@ -16,6 +16,9 @@ const Login = () => {
       <div className="login-box">
         <div className="left">
           <div className="left-inner">
+            <div className="title">
+              <div>Credit Tracker +</div>
+            </div>
             <form noValidate autoComplete="off">
               <div className="input-wrapper">
                 <TextField

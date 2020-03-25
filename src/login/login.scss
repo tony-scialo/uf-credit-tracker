@@ -23,6 +23,17 @@
       .left-inner {
         width: 80%;
 
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 80px;
+          div:first-child {
+            color: #ff9068;
+            font-size: 26px;
+          }
+        }
+
         .input {
           width: 100%;
         }
@@ -32,8 +43,8 @@
 
         button {
           width: 100%;
-          margin-top: 90px;
-          background-color: #ff9068;
+          margin-top: 45px;
+          background-color: #00dec0;
         }
       }
     }
