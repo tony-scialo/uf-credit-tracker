@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.css'
 import { createStore, applyMiddleware } from 'redux'
-import AppReducer from './reducers/app/app.reducer'
 import thunkMiddleware from 'redux-thunk'
 import { Provider } from 'react-redux'
 import Login from './login/login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import reducers from './reducers/reducer'
 
-const store = createStore(AppReducer, applyMiddleware(thunkMiddleware))
+const store = createStore(reducers, applyMiddleware(thunkMiddleware))
 
 function App() {
   return (

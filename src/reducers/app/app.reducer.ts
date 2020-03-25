@@ -4,12 +4,10 @@ import { initialState } from './app.intitial'
 
 const AppReducer = (state: AppState = initialState, action: any) => {
   switch (action.type) {
-    case types.LOG_USER_IN: {
+    case types.LOG_USER_IN:
       return { ...state }
-    }
-    default: {
+    default:
       return { ...state }
-    }
   }
 }
 
