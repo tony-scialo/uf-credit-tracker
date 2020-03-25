@@ -4,4 +4,14 @@
   background: #74ebd5;
   background: -webkit-linear-gradient(to left, #acb6e5, #74ebd5);
   background: linear-gradient(to left, #acb6e5, #74ebd5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-box {
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.3);
+  }
 }
