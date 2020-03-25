@@ -15,33 +15,40 @@ const Login = () => {
     <div className="login">
       <div className="login-box">
         <div className="left">
-          <form noValidate autoComplete="off">
-            <TextField
-              className="input"
-              id="username-field"
-              label="Username"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <PersonIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <TextField
-              className="input"
-              id="password-field"
-              label="Password"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <LockOpenIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </form>
-          <Button variant="contained">Sign In</Button>
+          <div className="left-inner">
+            <form noValidate autoComplete="off">
+              <div className="input-wrapper">
+                <TextField
+                  className="input"
+                  id="username-field"
+                  label="Username"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <PersonIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+              <div className="input-wrapper">
+                <TextField
+                  className="input"
+                  id="password-field"
+                  label="Password"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <LockOpenIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </div>
+
+              <Button variant="contained">Sign In</Button>
+            </form>
+          </div>
         </div>
         <div className="right">
           <img src={SignIn} />

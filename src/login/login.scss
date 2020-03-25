@@ -1,9 +1,7 @@
 .login {
   width: 100%;
   height: 100%;
-  background: #74ebd5;
-  background: -webkit-linear-gradient(to left, #acb6e5, #74ebd5);
-  background: linear-gradient(to left, #acb6e5, #74ebd5);
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,8 +17,24 @@
       display: flex;
       flex-direction: column;
       flex: 1 1 0px;
-      .input {
-        width: 100%;
+      justify-content: center;
+      align-items: center;
+
+      .left-inner {
+        width: 80%;
+
+        .input {
+          width: 100%;
+        }
+        .input-wrapper {
+          padding: 24px 0;
+        }
+
+        button {
+          width: 100%;
+          margin-top: 90px;
+          background-color: #ff9068;
+        }
       }
     }
     .right {
