@@ -1,6 +1,8 @@
 import { Dispatch } from 'react'
 import { RootState } from '../reducer.state'
 
+import axios from 'axios'
+
 const types = {
   GET_DASHBOARD_DATA: '[DASHBOARD] GET DASHBOARD DATA',
   REQUEST_DASHBOARD_DATA: '[DASHBOARD] REQUEST DASHBOARD DATA',
@@ -12,6 +14,11 @@ const getDashboardData = () => {
   return async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(requestDashboardData())
     try {
+      axios.get(`https://jsonplaceholder.typicode.com/users`).then((res) => {
+        const persons = res.data
+        console.log(persons)
+      })
+
       return dispatch(dashboardDataSuccess())
     } catch (err) {
       return dispatch(dashboardDataError())
