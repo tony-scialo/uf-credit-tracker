@@ -1,2 +1,18 @@
 .dashboard {
+  .main-body {
+    display: flex;
+    justify-content: center;
+
+    .main-body-inner {
+      width: 75%;
+    }
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  .main-body {
+    .main-body-inner {
+      width: 95%;
+    }
+  }
 }
