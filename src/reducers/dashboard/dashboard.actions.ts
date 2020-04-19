@@ -12,7 +12,7 @@ const getDashboardData = () => {
   return async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(requestDashboardData())
     try {
-      return dispatch(dashboardDataSuccess())
+      //   return dispatch(dashboardDataSuccess())
     } catch (err) {
       return dispatch(dashboardDataError())
     }

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../reducers/reducer.state'
 import { getDashboardData } from '../reducers/dashboard/dashboard.actions'
 import ErrorMessage from '../error-message/ErrorMessage'
+import { CircularProgress } from '@material-ui/core'
 
 const Dashboard = () => {
   const dashboard = useSelector((state: RootState) => state.dashboard)
@@ -15,11 +16,26 @@ const Dashboard = () => {
   }, [])
 
   if (dashboard.loading) {
+    const loadingStyle = {
+      height: '80px',
+      width: '80px',
+    }
+
     return (
       <div className="dashboard">
         <Header />
         <div className="main-body">
-          <div className="main-body-inner">LOADING</div>
+          <div className="main-body-inner">
+            <div className="loading">
+              <CircularProgress
+                classes={{
+                  root: 'progress-bar',
+                }}
+                thickness={1}
+                style={loadingStyle}
+              />
+            </div>
+          </div>
         </div>
       </div>
     )
