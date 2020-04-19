@@ -14,11 +14,10 @@ const getDashboardData = () => {
   return async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(requestDashboardData())
     try {
-      axios.get(`https://jsonplaceholder.typicode.com/users`).then((res) => {
-        const persons = res.data
-        console.log(persons)
-      })
-
+      const { data } = await axios.get(
+        `https://jsonplaceholder.typicode.com/users`
+      )
+      console.log(data)
       return dispatch(dashboardDataSuccess())
     } catch (err) {
       return dispatch(dashboardDataError())
