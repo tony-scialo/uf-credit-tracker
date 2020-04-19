@@ -3,20 +3,21 @@ import './login.scss'
 import { Button, TextField, InputAdornment } from '@material-ui/core'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import PersonIcon from '@material-ui/icons/Person'
-
 import SignIn from '../assets/Plain-credit-card.jpg'
 import ErrorMessage from '../error-message/ErrorMessage'
+import { useHistory } from 'react-router-dom'
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' })
   const [showError, setShowError] = useState(false)
+  const history = useHistory()
 
   const onSignIn = () => {
     if (
       loginInfo.username === 'tscialo@uf.org' &&
       loginInfo.password === 'credit1'
     ) {
-      console.log('yussss')
+      history.push('/dashboard')
     } else {
       setShowError(true)
     }
