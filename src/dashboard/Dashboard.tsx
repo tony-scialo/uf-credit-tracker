@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Dashboard.scss'
 import Header from '../header/Header'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../reducers/reducer.state'
+import { getDashboardData } from '../reducers/dashboard/dashboard.actions'
 
 const Dashboard = () => {
+  const dashboard = useSelector((state: RootState) => state.dashboard)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getDashboardData())
+  }, [])
+
   return (
     <div className="dashboard">
       <Header />

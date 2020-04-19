@@ -7,8 +7,12 @@ import Login from './login/login'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import reducers from './reducers/reducer'
 import Dashboard from './dashboard/Dashboard'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
-const store = createStore(reducers, applyMiddleware(thunkMiddleware))
+const store = createStore(
+  reducers,
+  composeWithDevTools(applyMiddleware(thunkMiddleware))
+)
 
 function App() {
   return (
