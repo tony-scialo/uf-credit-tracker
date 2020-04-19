@@ -13,6 +13,22 @@ const dashboardReducer = (
         loading: true,
       }
     }
+    case types.DASHBOARD_DATA_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+      }
+    }
+    case types.DASHBOARD_DATA_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: {
+          showError: true,
+          message: 'Error loading dashboard data',
+        },
+      }
+    }
     default: {
       return { ...state }
     }
