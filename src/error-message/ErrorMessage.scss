@@ -1,0 +1,13 @@
+.message-wrapper {
+  background-color: #f1a9a0;
+  border: 1px solid #e74c3c;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin: 12px 0;
+
+  .message-title {
+    font-size: 18px;
+  }
+}

@@ -1,16 +1,35 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { RootState } from '../reducers/reducer.state'
+import React, { useState } from 'react'
 import './login.scss'
 import { Button, TextField, InputAdornment } from '@material-ui/core'
 import LockOpenIcon from '@material-ui/icons/LockOpen'
 import PersonIcon from '@material-ui/icons/Person'
 
 import SignIn from '../assets/Plain-credit-card.jpg'
+import ErrorMessage from '../error-message/ErrorMessage'
 
 const Login = () => {
-  const username = useSelector((state: RootState) => state.app.username)
-  const password = useSelector((state: RootState) => state.app.username)
+  const [loginInfo, setLoginInfo] = useState({ username: '', password: '' })
+  const [showError, setShowError] = useState(false)
+
+  const onSignIn = () => {
+    if (
+      loginInfo.username === 'tscialo@uf.org' &&
+      loginInfo.password === 'credit1'
+    ) {
+      console.log('yussss')
+    } else {
+      setShowError(true)
+    }
+  }
+
+  const usernameChange = (e: any) => {
+    setLoginInfo({ ...loginInfo, username: e.target.value })
+  }
+
+  const passwordChange = (e: any) => {
+    setLoginInfo({ ...loginInfo, password: e.target.value })
+  }
+
   return (
     <div className="login">
       <div className="login-box">
@@ -19,12 +38,16 @@ const Login = () => {
             <div className="title">
               <div>Credit Tracker +</div>
             </div>
+            {showError ? (
+              <ErrorMessage message={'Username/password mismatch'} />
+            ) : null}
             <form noValidate autoComplete="off">
               <div className="input-wrapper">
                 <TextField
                   className="input"
                   id="username-field"
                   label="Username"
+                  onChange={usernameChange}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -39,6 +62,8 @@ const Login = () => {
                   className="input"
                   id="password-field"
                   label="Password"
+                  onChange={passwordChange}
+                  type="password"
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -49,7 +74,9 @@ const Login = () => {
                 />
               </div>
 
-              <Button variant="contained">Sign In</Button>
+              <Button variant="contained" onClick={onSignIn}>
+                Sign In
+              </Button>
             </form>
           </div>
         </div>
