@@ -1,9 +1,11 @@
 import React from 'react'
+import './Dashboard.scss'
+import Header from '../header/Header'
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <div className="header">Header</div>
+      <Header />
       <div className="main-body">Body</div>
     </div>
   )
