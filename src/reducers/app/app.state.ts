@@ -1,4 +1,5 @@
 export interface AppState {
   username: string
-  password: string
+  loading: boolean
+  error: boolean
 }

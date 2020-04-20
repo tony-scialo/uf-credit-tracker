@@ -6,21 +6,18 @@ import PersonIcon from '@material-ui/icons/Person'
 import SignIn from '../assets/Plain-credit-card.jpg'
 import ErrorMessage from '../error-message/ErrorMessage'
 import { useHistory } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from '../reducers/reducer.state'
+import { loginTry } from '../reducers/app/app.actions'
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({ username: '', password: '' })
-  const [showError, setShowError] = useState(false)
+  const app = useSelector((state: RootState) => state.app)
   const history = useHistory()
+  const dispatch = useDispatch()
 
   const onSignIn = () => {
-    if (
-      loginInfo.username === 'tscialo@uf.org' &&
-      loginInfo.password === 'credit1'
-    ) {
-      history.push('/dashboard')
-    } else {
-      setShowError(true)
-    }
+    dispatch(loginTry(loginInfo.username, loginInfo.password, history))
   }
 
   const usernameChange = (e: any) => {
@@ -39,7 +36,7 @@ const Login = () => {
             <div className="title">
               <div>Credit Tracker +</div>
             </div>
-            {showError ? (
+            {app.error ? (
               <ErrorMessage message={'Username/password mismatch'} />
             ) : null}
             <form noValidate autoComplete="off">
