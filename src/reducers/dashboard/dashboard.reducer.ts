@@ -40,11 +40,12 @@ const dashboardReducer = (
       }
     }
     case types.ON_SHOW_TOTALS_SUCCESS: {
+      console.log(action.payload)
       return {
         ...state,
         loading: false,
         totals: {
-          numOfTuples: action.payload.numOfTuples,
+          numOfTuples: action.payload,
         },
         error: {
           showError: false,
