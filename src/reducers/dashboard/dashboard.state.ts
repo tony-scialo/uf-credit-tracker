@@ -5,4 +5,9 @@ export interface DashboardState {
     showError: boolean
     message: string
   }
+  totals: {
+    numOfTuples: number
+  }
+
+  currentScreen: 'dashboard' | 'totals'
 }

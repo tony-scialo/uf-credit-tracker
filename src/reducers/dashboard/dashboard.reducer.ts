@@ -17,6 +17,10 @@ const dashboardReducer = (
       return {
         ...state,
         loading: false,
+        error: {
+          showError: false,
+        },
+        currentScreen: 'dashboard',
       }
     }
     case types.DASHBOARD_DATA_ERROR: {
@@ -26,6 +30,35 @@ const dashboardReducer = (
         error: {
           showError: true,
           message: 'Error loading dashboard data',
+        },
+      }
+    }
+    case types.ON_SHOW_TOTALS_START: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case types.ON_SHOW_TOTALS_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        totals: {
+          numOfTuples: action.payload.numOfTuples,
+        },
+        error: {
+          showError: false,
+        },
+        currentScreen: 'totals',
+      }
+    }
+    case types.ON_SHOW_TOTALS_ERROR: {
+      return {
+        ...state,
+        loading: false,
+        error: {
+          showError: true,
+          message: 'Error getting number of tuples',
         },
       }
     }

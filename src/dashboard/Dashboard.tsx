@@ -110,6 +110,12 @@ const Dashboard = () => {
         <Header />
         <div className="main-body">
           <div className="main-body-inner">
+            {dashboard.currentScreen === 'dashboard' ? (
+              <div>Dashboard</div>
+            ) : null}
+
+            {dashboard.currentScreen === 'totals' ? <div>Totals</div> : null}
+
             <LineChart
               width={730}
               height={250}

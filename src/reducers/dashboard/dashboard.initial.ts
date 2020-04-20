@@ -7,4 +7,8 @@ export const initialState: DashboardState = {
     showError: false,
     message: '',
   },
+  totals: {
+    numOfTuples: 0,
+  },
+  currentScreen: 'dashboard',
 }

@@ -1,16 +1,23 @@
 import React from 'react'
 import CreditCardIcon from '@material-ui/icons/CreditCard'
 import './Header.scss'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../reducers/reducer.state'
-import { useHistory } from 'react-router'
+import {
+  onShowTotals,
+  getDashboardData,
+} from '../reducers/dashboard/dashboard.actions'
 
 const Header = () => {
   const username = useSelector((state: RootState) => state.app.username)
-  const history = useHistory()
+  const dispatch = useDispatch()
 
   const navigate = (path: string) => {
-    history.push(path)
+    if (path === 'dashboard') {
+      dispatch(getDashboardData())
+    } else if (path === 'totals') {
+      dispatch(onShowTotals())
+    }
   }
 
   return (
@@ -28,10 +35,10 @@ const Header = () => {
       </div>
       <div className="menu-wrapper">
         <div className="menu-inner inner">
-          <div className="menu-item" onClick={() => navigate('/dashboard')}>
+          <div className="menu-item" onClick={() => navigate('dashboard')}>
             Dashboard
           </div>
-          <div className="menu-item" onClick={() => navigate('/totals')}>
+          <div className="menu-item" onClick={() => navigate('totals')}>
             Total Records
           </div>
         </div>
