@@ -17,6 +17,7 @@ import {
   Legend,
 } from 'recharts'
 import Totals from './totals/Totals'
+import DashboardMain from './DashboardMain/DashboardMain'
 
 const Dashboard = () => {
   const dashboard = useSelector((state: RootState) => state.dashboard)
@@ -111,9 +112,7 @@ const Dashboard = () => {
         <Header />
         <div className="main-body">
           <div className="main-body-inner">
-            {dashboard.currentScreen === 'dashboard' ? (
-              <div>Dashboard</div>
-            ) : null}
+            {dashboard.currentScreen === 'dashboard' ? <DashboardMain /> : null}
 
             {dashboard.currentScreen === 'totals' ? <Totals /> : null}
 
