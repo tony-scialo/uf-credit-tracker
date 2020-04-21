@@ -29,10 +29,16 @@ export interface DashboardState {
     }>
   }
   charges: {
+    numOfDays: number
     topMembershipType: Array<{
       membershipType: string
       month: string
       percentage: number
+    }>
+    compareCharge: Array<{
+      chargeDate: string
+      cat1Amt: number
+      cat2Amt: number
     }>
   }
 }

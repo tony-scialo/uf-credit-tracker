@@ -75,10 +75,16 @@ const dashboardReducer = (
       }
     }
     case types.ON_SHOW_CHARGES_SUCCESS: {
+      console.log(action.payload)
       return {
         ...state,
         loading: false,
         currentScreen: 'charges',
+        charges: {
+          numOfDays: action.payload.numOfDays,
+          topMembershipType: action.payload.topMembershipType,
+          compareCharge: action.payload.compareCharge,
+        },
       }
     }
     case types.ON_SHOW_CHARGES_ERROR: {

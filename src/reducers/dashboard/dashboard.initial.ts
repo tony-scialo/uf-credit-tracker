@@ -18,6 +18,8 @@ export const initialState: DashboardState = {
     topMember: [],
   },
   charges: {
+    numOfDays: 30,
     topMembershipType: [],
+    compareCharge: [],
   },
 }

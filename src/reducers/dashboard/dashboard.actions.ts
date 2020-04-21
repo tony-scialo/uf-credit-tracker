@@ -98,7 +98,18 @@ const onShowCharges = () => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(onShowChargesStart())
     try {
-      return dispatch(onShowChargesSuccess())
+      const numOfDays = 30
+
+      const allData = await Promise.all([
+        getTopMembershipType(numOfDays),
+        getCompareTwoCategory('Travel', 'Meals', numOfDays),
+      ])
+
+      const [topMembershipType, compareCharge] = allData
+
+      return dispatch(
+        onShowChargesSuccess({ topMembershipType, compareCharge, numOfDays })
+      )
     } catch (err) {
       return dispatch(onShowChargesError())
     }
@@ -111,9 +122,14 @@ const onShowChargesStart = () => {
   }
 }
 
-const onShowChargesSuccess = () => {
+const onShowChargesSuccess = (payload: {
+  topMembershipType: Array<any>
+  compareCharge: Array<any>
+  numOfDays: number
+}) => {
   return {
     type: types.ON_SHOW_CHARGES_SUCCESS,
+    payload,
   }
 }
 
@@ -150,18 +166,26 @@ const getTopMembers = (numOfDays: number) => {
     .catch((err) => console.log(err))
 }
 
-const getTopMembershipType = () => {
-  return Promise.resolve({
-    status: 'success',
-    data: {
-      topMembershipType: [
-        { membershipType: 'plat', month: '03-2019', percentage: '20' },
-        { membershipType: 'plat', month: '04-2019', percentage: '30' },
-        { membershipType: 'plat', month: '05-2019', percentage: '40' },
-      ],
-    },
-    error: '',
-  })
+const getTopMembershipType = (numOfDays: number) => {
+  return axios
+    .get(`http://localhost:8080/charge/membershipType/${numOfDays}`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
+}
+
+const getCompareTwoCategory = (
+  cat1: string,
+  cat2: string,
+  numOfDays: number
+) => {
+  return axios
+    .get(`http://localhost:8080/charge/compare/${cat1}/${cat2}/${numOfDays}`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
 }
 
 export { types, getDashboardData, onShowTotals, onShowCharges }
