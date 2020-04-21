@@ -1,20 +1,24 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import './PaymentsSection.scss'
+import { PieChart, Pie, Cell } from 'recharts'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../reducers/reducer.state'
 
 const PaymentsSection = () => {
+  const payments = useSelector((state: RootState) => state.dashboard.payments)
   const [days, setDays] = useState(30)
 
   const handleChange = (event: any) => {
     setDays(event.target.value)
   }
 
-  const wrapper: any = useRef(null)
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#651fff']
 
   return (
     <div className="payments-section">
       <div className="filter">
-        <FormControl ref={wrapper}>
+        <FormControl>
           <InputLabel id="paymentInputLabel">Previous</InputLabel>
           <Select
             labelId="paymentInputLabel"
@@ -28,7 +32,28 @@ const PaymentsSection = () => {
           </Select>
         </FormControl>
       </div>
-      <div className="data"></div>
+      <div className="data">
+        <PieChart width={450} height={250}>
+          <Pie
+            data={payments.topRegions.map((d) => {
+              return { name: d.regionName, value: d.totalPayments }
+            })}
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={70}
+            fill="#8884d8"
+            paddingAngle={5}
+            dataKey="value"
+            nameKey="name"
+            label={(entry) => entry.name}
+          >
+            {payments.topRegions.map((entry, index) => (
+              <Cell key={index} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+        </PieChart>
+      </div>
     </div>
   )
 }
