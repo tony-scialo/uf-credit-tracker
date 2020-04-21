@@ -7,10 +7,12 @@
 
   .data {
     .data-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding-bottom: 60px;
+      }
       .pie-chart {
         position: relative;
         .title {
