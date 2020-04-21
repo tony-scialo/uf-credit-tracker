@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react'
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
+import './PaymentsSection.scss'
 
 const PaymentsSection = () => {
   const [days, setDays] = useState(30)
 
   const handleChange = (event: any) => {
     setDays(event.target.value)
-    console.log(event.target.value)
   }
 
   const wrapper: any = useRef(null)
