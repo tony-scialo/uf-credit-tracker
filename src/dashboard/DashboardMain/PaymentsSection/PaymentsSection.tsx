@@ -33,26 +33,54 @@ const PaymentsSection = () => {
         </FormControl>
       </div>
       <div className="data">
-        <PieChart width={450} height={250}>
-          <Pie
-            data={payments.topRegions.map((d) => {
-              return { name: d.regionName, value: d.totalPayments }
-            })}
-            cx="50%"
-            cy="50%"
-            innerRadius={60}
-            outerRadius={70}
-            fill="#8884d8"
-            paddingAngle={5}
-            dataKey="value"
-            nameKey="name"
-            label={(entry) => entry.name}
-          >
-            {payments.topRegions.map((entry, index) => (
-              <Cell key={index} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-        </PieChart>
+        <div className="data-inner">
+          <div className="pie-chart">
+            <div className="title">Top 5 Regions</div>
+            <PieChart width={450} height={250}>
+              <Pie
+                data={payments.topRegions.map((d) => {
+                  return { name: d.regionName, value: d.totalPayments }
+                })}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={70}
+                fill="#8884d8"
+                paddingAngle={5}
+                dataKey="value"
+                nameKey="name"
+                label={(entry) => entry.name}
+              >
+                {payments.topRegions.map((entry, index) => (
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+            </PieChart>
+          </div>
+          <div className="pie-chart">
+            <div className="title">Top 5 Corps</div>
+            <PieChart width={450} height={250}>
+              <Pie
+                data={payments.topCorp.map((d) => {
+                  return { name: d.corpName, value: d.totalPayments }
+                })}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
+                outerRadius={70}
+                fill="#8884d8"
+                paddingAngle={5}
+                dataKey="value"
+                nameKey="name"
+                label={(entry) => entry.name}
+              >
+                {payments.topRegions.map((entry, index) => (
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
+                ))}
+              </Pie>
+            </PieChart>
+          </div>
+        </div>
       </div>
     </div>
   )

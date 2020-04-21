@@ -4,4 +4,23 @@
     display: flex;
     justify-content: flex-end;
   }
+
+  .data {
+    .data-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      .pie-chart {
+        position: relative;
+        .title {
+          position: absolute;
+          width: 80px;
+          text-align: center;
+          top: 104px;
+          left: 185px;
+        }
+      }
+    }
+  }
 }
