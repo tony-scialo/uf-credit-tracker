@@ -8,7 +8,7 @@ export interface DashboardState {
   totals: {
     numOfTuples: number
   }
-  currentScreen: 'dashboard' | 'totals'
+  currentScreen: 'dashboard' | 'totals' | 'charges'
   payments: {
     numOfDays: number
     topRegions: Array<{

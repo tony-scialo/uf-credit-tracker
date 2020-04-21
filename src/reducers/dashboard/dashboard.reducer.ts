@@ -68,6 +68,26 @@ const dashboardReducer = (
         },
       }
     }
+    case types.ON_SHOW_CHARGES_START: {
+      return {
+        ...state,
+        loading: true,
+      }
+    }
+    case types.ON_SHOW_CHARGES_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        currentScreen: 'charges',
+      }
+    }
+    case types.ON_SHOW_CHARGES_ERROR: {
+      return {
+        ...state,
+        loading: false,
+      }
+    }
+
     default: {
       return { ...state }
     }

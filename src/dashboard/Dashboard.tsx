@@ -8,6 +8,7 @@ import ErrorMessage from '../error-message/ErrorMessage'
 import { CircularProgress } from '@material-ui/core'
 import Totals from './totals/Totals'
 import DashboardMain from './DashboardMain/DashboardMain'
+import ChargesSection from './DashboardMain/ChargesSection/ChargesSection'
 
 const Dashboard = () => {
   const dashboard = useSelector((state: RootState) => state.dashboard)
@@ -60,6 +61,7 @@ const Dashboard = () => {
           <div className="main-body-inner">
             {dashboard.currentScreen === 'dashboard' ? <DashboardMain /> : null}
             {dashboard.currentScreen === 'totals' ? <Totals /> : null}
+            {dashboard.currentScreen === 'charges' ? <ChargesSection /> : null}
           </div>
         </div>
       </div>

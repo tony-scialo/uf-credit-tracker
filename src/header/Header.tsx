@@ -6,6 +6,7 @@ import { RootState } from '../reducers/reducer.state'
 import {
   onShowTotals,
   getDashboardData,
+  onShowCharges,
 } from '../reducers/dashboard/dashboard.actions'
 
 const Header = () => {
@@ -17,6 +18,8 @@ const Header = () => {
       dispatch(getDashboardData(30))
     } else if (path === 'totals') {
       dispatch(onShowTotals())
+    } else if (path === 'charges') {
+      dispatch(onShowCharges())
     }
   }
 
@@ -37,6 +40,9 @@ const Header = () => {
         <div className="menu-inner inner">
           <div className="menu-item" onClick={() => navigate('dashboard')}>
             Dashboard
+          </div>
+          <div className="menu-item" onClick={() => navigate('charges')}>
+            Charges
           </div>
           <div className="menu-item" onClick={() => navigate('totals')}>
             Total Records

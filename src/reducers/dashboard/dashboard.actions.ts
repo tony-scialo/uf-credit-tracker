@@ -11,6 +11,9 @@ const types = {
   ON_SHOW_TOTALS_START: '[DASHBOARD] ON SHOW TOTALS START',
   ON_SHOW_TOTALS_SUCCESS: '[DASHBOARD] ON SHOW TOTALS SUCCESS',
   ON_SHOW_TOTALS_ERROR: '[DASHBOARD] ON SHOW TOTALS ERROR',
+  ON_SHOW_CHARGES_START: '[DASHBOARD] ON SHOW CHARGES START',
+  ON_SHOW_CHARGES_SUCCESS: '[DASHBOARD] ON SHOW CHARGES SUCCESS',
+  ON_SHOW_CHARGES_ERROR: '[DASHBOARD] ON SHOW CHARGES ERROR',
 }
 
 const getDashboardData = (numOfDays: number) => {
@@ -91,6 +94,35 @@ const onShowTotalsError = () => {
   }
 }
 
+const onShowCharges = () => {
+  return async (dispatch: Dispatch<any>) => {
+    dispatch(onShowChargesStart())
+    try {
+      return dispatch(onShowChargesSuccess())
+    } catch (err) {
+      return dispatch(onShowChargesError())
+    }
+  }
+}
+
+const onShowChargesStart = () => {
+  return {
+    type: types.ON_SHOW_CHARGES_START,
+  }
+}
+
+const onShowChargesSuccess = () => {
+  return {
+    type: types.ON_SHOW_CHARGES_SUCCESS,
+  }
+}
+
+const onShowChargesError = () => {
+  return {
+    type: types.ON_SHOW_CHARGES_ERROR,
+  }
+}
+
 const getTopRegions = (numOfDays: number) => {
   return axios
     .get(`http://localhost:8080/regions/topfive/${numOfDays}`)
@@ -132,4 +164,4 @@ const getTopMembershipType = () => {
   })
 }
 
-export { types, getDashboardData, onShowTotals }
+export { types, getDashboardData, onShowTotals, onShowCharges }
