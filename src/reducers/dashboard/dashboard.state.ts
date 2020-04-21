@@ -27,4 +27,11 @@ export interface DashboardState {
       totalPayments: number
     }>
   }
+  charges: {
+    topMembershipType: Array<{
+      membershipType: string
+      month: string
+      percentage: number
+    }>
+  }
 }

@@ -96,6 +96,7 @@ const PaymentsSection = () => {
 
           <div className="row">
             <div className="bar-chart">
+              <div className="title">Top 5 Members</div>
               <BarChart
                 width={730}
                 height={250}

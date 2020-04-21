@@ -14,7 +14,6 @@ const dashboardReducer = (
       }
     }
     case types.DASHBOARD_DATA_SUCCESS: {
-      console.log(action.payload)
       return {
         ...state,
         loading: false,
@@ -46,7 +45,6 @@ const dashboardReducer = (
       }
     }
     case types.ON_SHOW_TOTALS_SUCCESS: {
-      console.log(action.payload)
       return {
         ...state,
         loading: false,

@@ -23,17 +23,7 @@ const getDashboardData = () => {
         getTopMembers(),
       ])
 
-      const [
-        {
-          data: { topRegions },
-        },
-        {
-          data: { topCorp },
-        },
-        {
-          data: { topMember },
-        },
-      ] = allData
+      const [topRegions, topCorp, topMember] = allData
 
       return dispatch(dashboardDataSuccess({ topRegions, topCorp, topMember }))
     } catch (err) {
@@ -99,72 +89,40 @@ const onShowTotalsError = () => {
 }
 
 const getTopRegions = () => {
-  return Promise.resolve({
-    status: 'success',
-    data: {
-      topRegions: [
-        { regionNo: 9, regionName: 'Africa', totalPayments: 1815167 },
-        { regionNo: 4, regionName: 'Western Europe', totalPayments: 1805543 },
-        { regionNo: 3, regionName: 'Scandanavia', totalPayments: 1686398 },
-        { regionNo: 7, regionName: 'China', totalPayments: 1678806 },
-        { regionNo: 5, regionName: 'Easten Europe', totalPayments: 1678345 },
-      ],
-    },
-    error: '',
-  })
+  return axios
+    .get(`http://localhost:8080/regions/topfive/30`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
 }
 
 const getTopCorp = () => {
-  return Promise.resolve({
-    status: 'success',
-    data: {
-      topCorp: [
-        { corpNo: 94, corpName: 'E*Trade', totalPayments: 79078 },
-        { corpNo: 42, corpName: 'Mastercard Inc.', totalPayments: 69676 },
-        { corpNo: 34, corpName: 'A.O. Smith Corp', totalPayments: 67211 },
-        { corpNo: 71, corpName: 'Align Technology', totalPayments: 67073 },
-        { corpNo: 13, corpName: 'CVS Health', totalPayments: 64746 },
-      ],
-    },
-    error: '',
-  })
+  return axios
+    .get(`http://localhost:8080/corporations/topfive/30`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
 }
 
 const getTopMembers = () => {
+  return axios
+    .get(`http://localhost:8080/members/topfive/30`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
+}
+
+const getTopMembershipType = () => {
   return Promise.resolve({
     status: 'success',
     data: {
-      topMember: [
-        {
-          memberNo: 1,
-          memberFName: 'Diego',
-          memberLName: 'Abreba',
-          totalPayments: 25602,
-        },
-        {
-          memberNo: 2,
-          memberFName: 'Brenda',
-          memberLName: 'Smith',
-          totalPayments: 23201,
-        },
-        {
-          memberNo: 3,
-          memberFName: 'John',
-          memberLName: 'Yank',
-          totalPayments: 22880,
-        },
-        {
-          memberNo: 4,
-          memberFName: 'Tony',
-          memberLName: 'Gordon',
-          totalPayments: 22240,
-        },
-        {
-          memberNo: 5,
-          memberFName: 'Kelsey',
-          memberLName: 'Scezer',
-          totalPayments: 22044,
-        },
+      topMembershipType: [
+        { membershipType: 'plat', month: '03-2019', percentage: '20' },
+        { membershipType: 'plat', month: '04-2019', percentage: '30' },
+        { membershipType: 'plat', month: '05-2019', percentage: '40' },
       ],
     },
     error: '',

@@ -16,4 +16,7 @@ export const initialState: DashboardState = {
     topCorp: [],
     topMember: [],
   },
+  charges: {
+    topMembershipType: [],
+  },
 }
