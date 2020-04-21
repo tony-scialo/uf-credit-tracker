@@ -14,11 +14,17 @@ const dashboardReducer = (
       }
     }
     case types.DASHBOARD_DATA_SUCCESS: {
+      console.log(action.payload)
       return {
         ...state,
         loading: false,
         error: {
           showError: false,
+        },
+        payments: {
+          topRegions: action.payload.topRegions,
+          topCorp: action.payload.topCorp,
+          topMember: action.payload.topMember,
         },
         currentScreen: 'dashboard',
       }

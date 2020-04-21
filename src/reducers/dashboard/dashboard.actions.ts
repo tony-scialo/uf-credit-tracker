@@ -17,10 +17,25 @@ const getDashboardData = () => {
   return async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(requestDashboardData())
     try {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/users`
-      )
-      return dispatch(dashboardDataSuccess())
+      const allData = await Promise.all([
+        getTopRegions(),
+        getTopCorp(),
+        getTopMembers(),
+      ])
+
+      const [
+        {
+          data: { topRegions },
+        },
+        {
+          data: { topCorp },
+        },
+        {
+          data: { topMember },
+        },
+      ] = allData
+
+      return dispatch(dashboardDataSuccess({ topRegions, topCorp, topMember }))
     } catch (err) {
       return dispatch(dashboardDataError())
     }
@@ -33,9 +48,14 @@ const requestDashboardData = () => {
   }
 }
 
-const dashboardDataSuccess = () => {
+const dashboardDataSuccess = (payload: {
+  topRegions: Array<any>
+  topCorp: Array<any>
+  topMember: Array<any>
+}) => {
   return {
     type: types.DASHBOARD_DATA_SUCCESS,
+    payload,
   }
 }
 
@@ -76,6 +96,38 @@ const onShowTotalsError = () => {
   return {
     type: types.ON_SHOW_TOTALS_ERROR,
   }
+}
+
+const getTopRegions = () => {
+  return Promise.resolve({
+    status: 'success',
+    data: {
+      topRegions: [{ regionNo: 1, regionName: '', totalPayments: 4444 }],
+    },
+    error: '',
+  })
+}
+
+const getTopCorp = () => {
+  return Promise.resolve({
+    status: 'success',
+    data: {
+      topCorp: [{ corpNo: 1, corpName: '', totalPayments: 4444 }],
+    },
+    error: '',
+  })
+}
+
+const getTopMembers = () => {
+  return Promise.resolve({
+    status: 'success',
+    data: {
+      topMember: [
+        { memberNo: 1, memberFName: '', memberLName: '', totalPayments: 4444 },
+      ],
+    },
+    error: '',
+  })
 }
 
 export { types, getDashboardData, onShowTotals }

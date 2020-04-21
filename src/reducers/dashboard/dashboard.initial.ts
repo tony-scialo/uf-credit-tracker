@@ -11,4 +11,9 @@ export const initialState: DashboardState = {
     numOfTuples: 0,
   },
   currentScreen: 'dashboard',
+  payments: {
+    topRegions: [],
+    topCorp: [],
+    topMember: [],
+  },
 }
