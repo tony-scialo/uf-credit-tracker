@@ -12,6 +12,7 @@ export const initialState: DashboardState = {
   },
   currentScreen: 'dashboard',
   payments: {
+    numOfDays: 30,
     topRegions: [],
     topCorp: [],
     topMember: [],

@@ -14,7 +14,7 @@ const Dashboard = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getDashboardData())
+    dispatch(getDashboardData(30))
   }, [])
 
   if (dashboard.loading) {

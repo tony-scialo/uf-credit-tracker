@@ -21,6 +21,7 @@ const dashboardReducer = (
           showError: false,
         },
         payments: {
+          numOfDays: action.payload.numOfDays,
           topRegions: action.payload.topRegions,
           topCorp: action.payload.topCorp,
           topMember: action.payload.topMember,

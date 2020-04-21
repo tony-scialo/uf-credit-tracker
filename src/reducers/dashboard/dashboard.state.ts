@@ -10,6 +10,7 @@ export interface DashboardState {
   }
   currentScreen: 'dashboard' | 'totals'
   payments: {
+    numOfDays: number
     topRegions: Array<{
       regionNo: number
       regionName: string

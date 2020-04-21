@@ -13,15 +13,16 @@ import {
   Legend,
   Bar,
 } from 'recharts'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../reducers/reducer.state'
+import { getDashboardData } from '../../../reducers/dashboard/dashboard.actions'
 
 const PaymentsSection = () => {
   const payments = useSelector((state: RootState) => state.dashboard.payments)
-  const [days, setDays] = useState(30)
+  const dispatch = useDispatch()
 
   const handleChange = (event: any) => {
-    setDays(event.target.value)
+    dispatch(getDashboardData(event.target.value))
   }
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#651fff']
@@ -34,7 +35,7 @@ const PaymentsSection = () => {
           <Select
             labelId="paymentInputLabel"
             id="paymentInput"
-            value={days}
+            value={payments.numOfDays}
             onChange={handleChange}
           >
             <MenuItem value={30}>30 days</MenuItem>

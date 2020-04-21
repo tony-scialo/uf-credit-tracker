@@ -14,7 +14,7 @@ const Header = () => {
 
   const navigate = (path: string) => {
     if (path === 'dashboard') {
-      dispatch(getDashboardData())
+      dispatch(getDashboardData(30))
     } else if (path === 'totals') {
       dispatch(onShowTotals())
     }

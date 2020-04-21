@@ -13,19 +13,21 @@ const types = {
   ON_SHOW_TOTALS_ERROR: '[DASHBOARD] ON SHOW TOTALS ERROR',
 }
 
-const getDashboardData = () => {
+const getDashboardData = (numOfDays: number) => {
   return async (dispatch: Dispatch<any>, getState: () => RootState) => {
     dispatch(requestDashboardData())
     try {
       const allData = await Promise.all([
-        getTopRegions(),
-        getTopCorp(),
-        getTopMembers(),
+        getTopRegions(numOfDays),
+        getTopCorp(numOfDays),
+        getTopMembers(numOfDays),
       ])
 
       const [topRegions, topCorp, topMember] = allData
 
-      return dispatch(dashboardDataSuccess({ topRegions, topCorp, topMember }))
+      return dispatch(
+        dashboardDataSuccess({ topRegions, topCorp, topMember, numOfDays })
+      )
     } catch (err) {
       return dispatch(dashboardDataError())
     }
@@ -42,6 +44,7 @@ const dashboardDataSuccess = (payload: {
   topRegions: Array<any>
   topCorp: Array<any>
   topMember: Array<any>
+  numOfDays: number
 }) => {
   return {
     type: types.DASHBOARD_DATA_SUCCESS,
@@ -88,27 +91,27 @@ const onShowTotalsError = () => {
   }
 }
 
-const getTopRegions = () => {
+const getTopRegions = (numOfDays: number) => {
   return axios
-    .get(`http://localhost:8080/regions/topfive/30`)
+    .get(`http://localhost:8080/regions/topfive/${numOfDays}`)
     .then((response) => {
       return response.data.data
     })
     .catch((err) => console.log(err))
 }
 
-const getTopCorp = () => {
+const getTopCorp = (numOfDays: number) => {
   return axios
-    .get(`http://localhost:8080/corporations/topfive/30`)
+    .get(`http://localhost:8080/corporations/topfive/${numOfDays}`)
     .then((response) => {
       return response.data.data
     })
     .catch((err) => console.log(err))
 }
 
-const getTopMembers = () => {
+const getTopMembers = (numOfDays: number) => {
   return axios
-    .get(`http://localhost:8080/members/topfive/30`)
+    .get(`http://localhost:8080/members/topfive/${numOfDays}`)
     .then((response) => {
       return response.data.data
     })
