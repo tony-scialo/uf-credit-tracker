@@ -75,7 +75,6 @@ const dashboardReducer = (
       }
     }
     case types.ON_SHOW_CHARGES_SUCCESS: {
-      console.log(action.payload)
       return {
         ...state,
         loading: false,
