@@ -84,6 +84,33 @@ const ChargesSection = () => {
                     </LineChart>
                   </div>
                 </div>
+
+                <div className="row">
+                  <div className="bar-chart">
+                    <div className="title">Compare Two Charges</div>
+                    <LineChart
+                      width={830}
+                      height={350}
+                      data={charges.compareCharge}
+                      margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                    >
+                      <XAxis dataKey="chargeDate" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="cat1Amt"
+                        stroke="#0088FE"
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="cat2Amt"
+                        stroke="#FF8042"
+                      />
+                    </LineChart>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
