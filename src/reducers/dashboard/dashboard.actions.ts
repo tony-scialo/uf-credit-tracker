@@ -94,12 +94,10 @@ const onShowTotalsError = () => {
   }
 }
 
-const onShowCharges = () => {
+const onShowCharges = (numOfDays: number) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(onShowChargesStart())
     try {
-      const numOfDays = 30
-
       const allData = await Promise.all([
         getTopMembershipType(numOfDays),
         getCompareTwoCategory('Travel', 'Meals', numOfDays),

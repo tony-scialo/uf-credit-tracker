@@ -13,12 +13,6 @@ const DashboardMain = () => {
           <PaymentsSection />
         </div>
       </div>
-      {/* <div className="container">
-        <h3>Charges</h3>
-        <div className="container-inner">
-          <ChargesSection />
-        </div>
-      </div> */}
     </div>
   )
 }
