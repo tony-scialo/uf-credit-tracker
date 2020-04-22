@@ -19,6 +19,8 @@ export const initialState: DashboardState = {
   },
   charges: {
     numOfDays: 30,
+    cat1: 'Travel',
+    cat2: 'Meals',
     topMembershipType: [],
     compareCharge: [],
   },

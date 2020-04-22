@@ -38,7 +38,14 @@ const ChargesSection = () => {
   }
 
   const handleChange = (event: any) => {
-    dispatch(onShowCharges(event.target.value))
+    dispatch(onShowCharges(charges.cat1, charges.cat2, event.target.value))
+  }
+
+  const handleCat1Change = (event: any) => {
+    dispatch(onShowCharges(event.target.value, charges.cat2, charges.numOfDays))
+  }
+  const handleCat2Change = (event: any) => {
+    dispatch(onShowCharges(charges.cat1, event.target.value, charges.numOfDays))
   }
 
   return (
@@ -84,10 +91,37 @@ const ChargesSection = () => {
                     </LineChart>
                   </div>
                 </div>
-
+                <div className="filter">
+                  <FormControl className="bar-filter-thing">
+                    <InputLabel id="cat1Label">Category 1</InputLabel>
+                    <Select
+                      labelId="cat1Label"
+                      id="cat1"
+                      value={charges.cat1}
+                      onChange={handleCat1Change}
+                    >
+                      <MenuItem value={'Travel'}>Travel</MenuItem>
+                      <MenuItem value={'Meals'}>Meals</MenuItem>
+                      <MenuItem value={90}>90 days</MenuItem>
+                    </Select>
+                  </FormControl>
+                  <FormControl className="bar-filter-thing">
+                    <InputLabel id="cat2Label">Category 2</InputLabel>
+                    <Select
+                      labelId="cat2Label"
+                      id="cat2"
+                      value={charges.cat2}
+                      onChange={handleCat2Change}
+                    >
+                      <MenuItem value={'Travel'}>Travel</MenuItem>
+                      <MenuItem value={'Meals'}>Meals</MenuItem>
+                      <MenuItem value={90}>90 days</MenuItem>
+                    </Select>
+                  </FormControl>
+                </div>
                 <div className="row">
                   <div className="bar-chart">
-                    <div className="title">Compare Two Charges</div>
+                    <div className="title">Compare Two Charges By Category</div>
                     <LineChart
                       width={830}
                       height={350}

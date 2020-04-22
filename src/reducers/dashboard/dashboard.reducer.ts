@@ -83,6 +83,8 @@ const dashboardReducer = (
           numOfDays: action.payload.numOfDays,
           topMembershipType: action.payload.topMembershipType,
           compareCharge: action.payload.compareCharge,
+          cat1: action.payload.cat1,
+          cat2: action.payload.cat2,
         },
       }
     }

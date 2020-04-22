@@ -30,6 +30,8 @@ export interface DashboardState {
   }
   charges: {
     numOfDays: number
+    cat1: string
+    cat2: string
     topMembershipType: Array<{
       membershipType: string
       month: string

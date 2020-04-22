@@ -19,7 +19,7 @@ const Header = () => {
     } else if (path === 'totals') {
       dispatch(onShowTotals())
     } else if (path === 'charges') {
-      dispatch(onShowCharges(30))
+      dispatch(onShowCharges('Travel', 'Meals', 30))
     }
   }
 

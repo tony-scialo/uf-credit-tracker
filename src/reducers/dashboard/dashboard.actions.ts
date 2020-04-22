@@ -94,19 +94,25 @@ const onShowTotalsError = () => {
   }
 }
 
-const onShowCharges = (numOfDays: number) => {
+const onShowCharges = (cat1: string, cat2: string, numOfDays: number) => {
   return async (dispatch: Dispatch<any>) => {
     dispatch(onShowChargesStart())
     try {
       const allData = await Promise.all([
         getTopMembershipType(numOfDays),
-        getCompareTwoCategory('Travel', 'Meals', numOfDays),
+        getCompareTwoCategory(cat1, cat2, numOfDays),
       ])
 
       const [topMembershipType, compareCharge] = allData
 
       return dispatch(
-        onShowChargesSuccess({ topMembershipType, compareCharge, numOfDays })
+        onShowChargesSuccess({
+          topMembershipType,
+          compareCharge,
+          numOfDays,
+          cat1,
+          cat2,
+        })
       )
     } catch (err) {
       return dispatch(onShowChargesError())
@@ -124,6 +130,8 @@ const onShowChargesSuccess = (payload: {
   topMembershipType: Array<any>
   compareCharge: Array<any>
   numOfDays: number
+  cat1: string
+  cat2: string
 }) => {
   return {
     type: types.ON_SHOW_CHARGES_SUCCESS,
