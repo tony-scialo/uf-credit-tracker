@@ -1,7 +1,17 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../../reducers/reducer.state'
-import { LineChart, XAxis, YAxis, Tooltip, Legend, Line } from 'recharts'
+import {
+  LineChart,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Line,
+  PieChart,
+  Pie,
+  Cell,
+} from 'recharts'
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import { onShowCharges } from '../../../reducers/dashboard/dashboard.actions'
 import '../PaymentsSection/PaymentsSection.scss'
@@ -47,6 +57,8 @@ const ChargesSection = () => {
   const handleCat2Change = (event: any) => {
     dispatch(onShowCharges(charges.cat1, event.target.value, charges.numOfDays))
   }
+
+  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#651fff']
 
   return (
     <div className="dashboard-main">
@@ -143,6 +155,34 @@ const ChargesSection = () => {
                         stroke="#FF8042"
                       />
                     </LineChart>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="bar-chart">
+                    <div className="title">Charges By Region</div>
+                    <PieChart width={450} height={250}>
+                      <Pie
+                        data={charges.chargeByRegion.map((d) => {
+                          return { name: d.regionName, value: d.percentages }
+                        })}
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={60}
+                        outerRadius={70}
+                        fill="#8884d8"
+                        paddingAngle={5}
+                        dataKey="value"
+                        nameKey="name"
+                        label={(entry) => entry.name}
+                      >
+                        {charges.chargeByRegion.map((entry, index) => (
+                          <Cell
+                            key={index}
+                            fill={COLORS[index % COLORS.length]}
+                          />
+                        ))}
+                      </Pie>
+                    </PieChart>
                   </div>
                 </div>
               </div>

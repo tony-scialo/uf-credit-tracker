@@ -101,9 +101,10 @@ const onShowCharges = (cat1: string, cat2: string, numOfDays: number) => {
       const allData = await Promise.all([
         getTopMembershipType(numOfDays),
         getCompareTwoCategory(cat1, cat2, numOfDays),
+        getChargeByRegion(numOfDays),
       ])
 
-      const [topMembershipType, compareCharge] = allData
+      const [topMembershipType, compareCharge, chargeByRegion] = allData
 
       return dispatch(
         onShowChargesSuccess({
@@ -112,6 +113,7 @@ const onShowCharges = (cat1: string, cat2: string, numOfDays: number) => {
           numOfDays,
           cat1,
           cat2,
+          chargeByRegion,
         })
       )
     } catch (err) {
@@ -132,6 +134,7 @@ const onShowChargesSuccess = (payload: {
   numOfDays: number
   cat1: string
   cat2: string
+  chargeByRegion: Array<any>
 }) => {
   return {
     type: types.ON_SHOW_CHARGES_SUCCESS,
@@ -188,6 +191,15 @@ const getCompareTwoCategory = (
 ) => {
   return axios
     .get(`http://localhost:8080/charge/compare/${cat1}/${cat2}/${numOfDays}`)
+    .then((response) => {
+      return response.data.data
+    })
+    .catch((err) => console.log(err))
+}
+
+const getChargeByRegion = (numOfDays: number) => {
+  return axios
+    .get(`http://localhost:8080/charge/region/${numOfDays}`)
     .then((response) => {
       return response.data.data
     })

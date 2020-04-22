@@ -85,6 +85,7 @@ const dashboardReducer = (
           compareCharge: action.payload.compareCharge,
           cat1: action.payload.cat1,
           cat2: action.payload.cat2,
+          chargeByRegion: action.payload.chargeByRegion,
         },
       }
     }

@@ -23,5 +23,6 @@ export const initialState: DashboardState = {
     cat2: 'Meals',
     topMembershipType: [],
     compareCharge: [],
+    chargeByRegion: [],
   },
 }

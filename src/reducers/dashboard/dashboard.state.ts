@@ -42,5 +42,6 @@ export interface DashboardState {
       cat1Amt: number
       cat2Amt: number
     }>
+    chargeByRegion: Array<{ regionName: string; percentages: number }>
   }
 }
