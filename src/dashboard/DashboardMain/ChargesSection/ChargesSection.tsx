@@ -114,7 +114,14 @@ const ChargesSection = () => {
                     >
                       <MenuItem value={'Travel'}>Travel</MenuItem>
                       <MenuItem value={'Meals'}>Meals</MenuItem>
-                      <MenuItem value={90}>90 days</MenuItem>
+                      <MenuItem value={'Lodging'}>Lodging</MenuItem>
+                      <MenuItem value={'Groceries'}>Groceries</MenuItem>
+                      <MenuItem value={'Entertainment'}>Entertainment</MenuItem>
+                      <MenuItem value={'Clothing'}>Clothing</MenuItem>
+                      <MenuItem value={'Electronics'}>Electronics</MenuItem>
+                      <MenuItem value={'Groceries'}>Groceries</MenuItem>
+                      <MenuItem value={'Communication'}>Communication</MenuItem>
+                      <MenuItem value={'Misc'}>Misc</MenuItem>
                     </Select>
                   </FormControl>
                   <FormControl className="bar-filter-thing">
@@ -127,7 +134,14 @@ const ChargesSection = () => {
                     >
                       <MenuItem value={'Travel'}>Travel</MenuItem>
                       <MenuItem value={'Meals'}>Meals</MenuItem>
-                      <MenuItem value={90}>90 days</MenuItem>
+                      <MenuItem value={'Lodging'}>Lodging</MenuItem>
+                      <MenuItem value={'Groceries'}>Groceries</MenuItem>
+                      <MenuItem value={'Entertainment'}>Entertainment</MenuItem>
+                      <MenuItem value={'Clothing'}>Clothing</MenuItem>
+                      <MenuItem value={'Electronics'}>Electronics</MenuItem>
+                      <MenuItem value={'Groceries'}>Groceries</MenuItem>
+                      <MenuItem value={'Communication'}>Communication</MenuItem>
+                      <MenuItem value={'Misc'}>Misc</MenuItem>
                     </Select>
                   </FormControl>
                 </div>

@@ -49,7 +49,7 @@ const PaymentsSection = () => {
           <div className="row">
             <div className="pie-chart">
               <div className="title">Top 5 Regions</div>
-              <PieChart width={450} height={250}>
+              <PieChart width={550} height={250}>
                 <Pie
                   data={payments.topRegions.map((d) => {
                     return { name: d.regionName, value: d.totalPayments }
@@ -72,7 +72,7 @@ const PaymentsSection = () => {
             </div>
             <div className="pie-chart">
               <div className="title">Top 5 Corps</div>
-              <PieChart width={450} height={250}>
+              <PieChart width={550} height={250}>
                 <Pie
                   data={payments.topCorp.map((d) => {
                     return { name: d.corpName, value: d.totalPayments }
